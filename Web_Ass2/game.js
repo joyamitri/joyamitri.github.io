@@ -18,7 +18,7 @@ window.onload = function(){
     bounds = document.getElementsByClassName("boundary"); //array that stores elements that have className = boundary
     stat = document.getElementById("status"); //access h2 tag to check the status of the user
     store = document.getElementsByClassName("boundary example");
-    store[0].innerHTML = "<span><strong>Score: </strong></span>" + score;
+    store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
     for(i = 0; i < bounds.length - 1; i++){
         bounds[i].onmouseover = overBoundary; //check if the user touched the boundaries 
     }
@@ -37,7 +37,8 @@ function overBoundary(){
         stat.textContent = "YOU LOST!!";
         if(i == bounds.length - 1){
             score -= 10;
-            store[0].innerHTML = "<span><strong>Score: </strong></span>" + score;
+            localStorage.setItem('score', score);
+            store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
             i++;
             hover_e = false;
         }
@@ -75,7 +76,8 @@ function end_game(){
     }
     if(hover_e == true){
         score += 5;
-        store[0].innerHTML = "<span><strong>Score: </strong></span>" + score;
+        localStorage.setItem('score', score);
+        store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
         hover_e = false;
     }
 }
