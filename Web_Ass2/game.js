@@ -18,7 +18,7 @@ window.onload = function(){
 function overBoundary(){
     lost = true;
     //this loop add a class to the boundaries without removing/affecting existing classes
-    for (var i = 0; i < bounds.length - 1; i++) {
+    for (let i = 0; i < bounds.length - 1; i++) {
         bounds[i].className += " youlose";
     }
     stat.textContent = "YOU LOST!!"
