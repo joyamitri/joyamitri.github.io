@@ -7,10 +7,12 @@ let stat; //display the status of the user (won or lost)
 let score = 0; //keep track of the score
 let store;
 let border;
+let hover_e = true;
+let i;
 
 window.onload = function(){
-    border = document.getElementById("game");
-    border.onmouseout = overBoundary;
+    // border = document.getElementById("game");
+    // border.onmouseout = overBoundary;
     start = document.getElementById("start"); //access the element that has id = start
     start.onmouseover = hover_start; //check if the mouse hovered over S to start the game
     start.onclick = sClick; //check if the user click on S ti reset settings
@@ -18,11 +20,11 @@ window.onload = function(){
     end.onmouseover = end_game; //check if the mouse hovered over E to end the game
     bounds = document.getElementsByClassName("boundary"); //array that stores elements that have className = boundary
     stat = document.getElementById("status"); //access h2 tag to check the status of the user
-    for(let i = 0; i < bounds.length - 1; i++){
+    store = document.getElementsByClassName("boundary example");
+    for(i = 0; i < bounds.length - 1; i++){
         bounds[i].onmouseover = overBoundary; //check if the user touched the boundaries 
     }
-    store = document.getElementsByClassName("boundary example");
-
+    
 }
 
 function overBoundary(){
@@ -34,10 +36,13 @@ function overBoundary(){
             bounds[i].className += " youlose";
         }
         stat.textContent = "YOU LOST!!";
-        score -= 10;
-        store[0].innerHTML = "<span>Score: </span>" + score;
+        if(i == bounds.length - 1){
+            score -= 10;
+            store[0].innerHTML = "<span>Score: </span>" + score;
+            i++;
+            hover_e = false;
+        }
     }
-
     //this loop add a class to the boundaries without removing/affecting existing classes
     // for (let i = 0; i < bounds.length - 1; i++) {
     //     bounds[i].className += " youlose";
@@ -51,7 +56,9 @@ function hover_start(){
 }
 
 function sClick(){
+    hover_e = true;
     lost = false;
+    i = bounds.length - 1;
     //this loop remove a single class of the boundaries without affecting other classes
     /*regex:
     (?:^|\s): match the start of the string or any single whitespace character
@@ -69,13 +76,14 @@ function end_game(){
     if(!lost){
         stat.textContent = "YOU WON!";
         hover = false;
+    }
+    if(hover_e == true){
         score += 5;
         store[0].innerHTML = "<span>Score: </span>" + score;
+        hover_e = false;
     }
-    // else{
-    //     stat.textContent = "YOU WON!";
-    // }
 }
+
 
 
 
