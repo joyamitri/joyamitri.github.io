@@ -1,10 +1,12 @@
 let bounds; 
 let lost;
 let start;
+let hover;
 let end;
 let stat;
 window.onload = function(){
     start = document.getElementById("start");
+    start.onmouseover = hover_start;
     start.onclick = sClick;
     end = document.getElementById("end");
     end.onmouseover = end_game;
@@ -17,11 +19,19 @@ window.onload = function(){
 
 function overBoundary(){
     lost = true;
-    //this loop add a class to the boundaries without removing/affecting existing classes
-    for (let i = 0; i < bounds.length - 1; i++) {
-        bounds[i].className += " youlose";
+
+    if(hover){
+        //this loop add a class to the boundaries without removing/affecting existing classes
+        for (let i = 0; i < bounds.length - 1; i++) {
+            bounds[i].className += " youlose";
+        }
+        stat.textContent = "YOU LOST!!";
     }
-    stat.textContent = "YOU LOST!!"
+    //this loop add a class to the boundaries without removing/affecting existing classes
+    // for (let i = 0; i < bounds.length - 1; i++) {
+    //     bounds[i].className += " youlose";
+    // }
+    // stat.textContent = "YOU LOST!!"
     
 }
 
@@ -32,7 +42,7 @@ function sClick(){
     (?:^|\s): match the start of the string or any single whitespace character
     (?!\S): verifies if the class name is whole. also ensures there is no non-space character following
      */
-    for (var i = 0; i < bounds.length - 1; i++) {
+    for (let i = 0; i < bounds.length - 1; i++) {
         bounds[i].className = bounds[i].className.replace(/(?:^|\s)youlose(?!\S)/g, '');
     }
     document.location.reload(true);
@@ -47,5 +57,9 @@ function end_game(){
     // else{
     //     stat.textContent = "YOU WON!";
     // }
+}
+
+function hover_start(){
+    hover = true;
 }
 
