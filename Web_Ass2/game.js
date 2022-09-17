@@ -1,19 +1,20 @@
-let bounds; 
-let lost;
-let start;
-let hover;
-let end;
-let stat;
+let bounds; //array used to store all the boundaries in the maze
+let lost; //variable used to check if the user lost and display message
+let start; //variable used to start the game 
+let hover; //variable used to check if the user hovered over S to start counting scores 
+let end; //where the game ends 
+let stat; //display the status of the user (won or lost)
+
 window.onload = function(){
-    start = document.getElementById("start");
-    start.onmouseover = hover_start;
-    start.onclick = sClick;
-    end = document.getElementById("end");
-    end.onmouseover = end_game;
-    bounds = document.getElementsByClassName("boundary");
-    stat = document.getElementById("status");
+    start = document.getElementById("start"); //access the element that has id = start
+    start.onmouseover = hover_start; //check if the mouse hovered over S to start the game
+    start.onclick = sClick; //check if the user click on S ti reset settings
+    end = document.getElementById("end"); //access the element that has id = end
+    end.onmouseover = end_game; //check if the mouse hovered over E to end the game
+    bounds = document.getElementsByClassName("boundary"); //array that stores elements that have className = boundary
+    stat = document.getElementById("status"); //access h2 tag to check the status of the user
     for(let i = 0; i < bounds.length - 1; i++){
-        bounds[i].onmouseover = overBoundary;
+        bounds[i].onmouseover = overBoundary; //check if the user touched the boundaries 
     }
 }
 
