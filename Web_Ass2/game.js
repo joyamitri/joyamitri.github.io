@@ -35,6 +35,10 @@ function overBoundary(){
     
 }
 
+function hover_start(){
+    hover = true;
+}
+
 function sClick(){
     lost = false;
     //this loop remove a single class of the boundaries without affecting other classes
@@ -45,8 +49,8 @@ function sClick(){
     for (let i = 0; i < bounds.length - 1; i++) {
         bounds[i].className = bounds[i].className.replace(/(?:^|\s)youlose(?!\S)/g, '');
     }
-    document.location.reload(true);
-    // stat.textContent = "Begin by moving your mouse over the \"S\".";
+    //document.location.reload(true);
+    stat.textContent = "Begin by moving your mouse over the \"S\".";
 }
 
 function end_game(){
@@ -59,7 +63,4 @@ function end_game(){
     // }
 }
 
-function hover_start(){
-    hover = true;
-}
 
