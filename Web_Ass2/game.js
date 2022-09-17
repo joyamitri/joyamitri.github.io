@@ -4,8 +4,13 @@ let start; //variable used to start the game
 let hover; //variable used to check if the user hovered over S to start counting scores 
 let end; //where the game ends 
 let stat; //display the status of the user (won or lost)
+let score = 0; //keep track of the score
+let store;
+let border;
 
 window.onload = function(){
+    border = document.getElementById("game");
+    border.onmouseout = overBoundary;
     start = document.getElementById("start"); //access the element that has id = start
     start.onmouseover = hover_start; //check if the mouse hovered over S to start the game
     start.onclick = sClick; //check if the user click on S ti reset settings
@@ -16,6 +21,8 @@ window.onload = function(){
     for(let i = 0; i < bounds.length - 1; i++){
         bounds[i].onmouseover = overBoundary; //check if the user touched the boundaries 
     }
+    store = document.getElementsByClassName("boundary example");
+
 }
 
 function overBoundary(){
@@ -27,7 +34,10 @@ function overBoundary(){
             bounds[i].className += " youlose";
         }
         stat.textContent = "YOU LOST!!";
+        score -= 10;
+        store[0].innerHTML = "<span>Score: </span>" + score;
     }
+
     //this loop add a class to the boundaries without removing/affecting existing classes
     // for (let i = 0; i < bounds.length - 1; i++) {
     //     bounds[i].className += " youlose";
@@ -55,13 +65,17 @@ function sClick(){
 }
 
 function end_game(){
-    stat = document.getElementById("status");
+    //stat = document.getElementById("status");
     if(!lost){
         stat.textContent = "YOU WON!";
+        hover = false;
+        score += 5;
+        store[0].innerHTML = "<span>Score: </span>" + score;
     }
     // else{
     //     stat.textContent = "YOU WON!";
     // }
 }
+
 
 
