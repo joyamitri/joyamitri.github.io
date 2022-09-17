@@ -2,12 +2,14 @@ let bounds;
 let lost;
 let start;
 let end;
+let stat;
 window.onload = function(){
     start = document.getElementById("start");
     start.onclick = sClick;
     end = document.getElementById("end");
-    end.onmouseover = lost_game();
+    end.onmouseover = end_game;
     bounds = document.getElementsByClassName("boundary");
+    stat = document.getElementById("status");
     for(let i = 0; i < bounds.length - 1; i++){
         bounds[i].onmouseover = overBoundary;
     }
@@ -19,6 +21,8 @@ function overBoundary(){
     for (var i = 0; i < bounds.length - 1; i++) {
         bounds[i].className += " youlose";
     }
+    stat.textContent = "YOU LOST!!"
+    
 }
 
 function sClick(){
@@ -31,13 +35,16 @@ function sClick(){
     for (var i = 0; i < bounds.length - 1; i++) {
         bounds[i].className = bounds[i].className.replace(/(?:^|\s)youlose(?!\S)/g, '');
     }
+    stat.textContent = "Begin by moving your mouse over the \"S\".";
 }
 
-function lost_game(){
-    if(lost){
-        alert("You lost")
-    }else{
-        alert("You won!")
+function end_game(){
+    stat = document.getElementById("status");
+    if(!lost){
+        stat.textContent = "YOU WON!";
     }
+    // else{
+    //     stat.textContent = "YOU WON!";
+    // }
 }
 
