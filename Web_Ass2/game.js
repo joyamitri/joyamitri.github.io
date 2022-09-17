@@ -35,7 +35,8 @@ function sClick(){
     for (var i = 0; i < bounds.length - 1; i++) {
         bounds[i].className = bounds[i].className.replace(/(?:^|\s)youlose(?!\S)/g, '');
     }
-    stat.textContent = "Begin by moving your mouse over the \"S\".";
+    document.location.reload(true);
+    // stat.textContent = "Begin by moving your mouse over the \"S\".";
 }
 
 function end_game(){
