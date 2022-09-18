@@ -50,11 +50,14 @@ function overBoundary(){
 
 //Start the game when we hover over S
 function hover_start(){
-    hover = true;
+    if(hover_e){
+        hover = true;
+    }
 }
 
 //refresh/restart when clicking on S
 function sClick(){
+    hover = true;
     hover_e = true;
     lost = false;
     i = bounds.length - 1;
@@ -81,12 +84,6 @@ function end_game(){
         store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
         hover_e = false;
     }
-    // if(hover_e == true){
-    //     score += 5;
-    //     localStorage.setItem('score', score);
-    //     store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
-    //     hover_e = false;
-    // }
 }
 
 
