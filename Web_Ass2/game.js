@@ -8,11 +8,14 @@ let score = 0; //keep track of the score
 let store; //put score inside the element that has id = boundary example
 let hover_e = true; //keep track of the hovers over E 
 let i; //counter
+let out; 
 
 window.onload = function(){
     start = document.getElementById("start"); //access the element that has id = start
     start.onmouseover = hover_start; //check if the mouse hovered over S to start the game
-    start.onclick = sClick; //check if the user click on S ti reset settings
+    start.onclick = sClick; //check if the user click on S to reset settings
+    out = document.getElementById("game");
+    out.onmouseleave = overBoundary; //disable cheating
     end = document.getElementById("end"); //access the element that has id = end
     end.onmouseover = end_game; //check if the mouse hovered over E to end the game
     bounds = document.getElementsByClassName("boundary"); //array that stores elements that have className = boundary
@@ -70,16 +73,20 @@ function sClick(){
 //Check if the user won when hover over the E
 function end_game(){
     //stat = document.getElementById("status");
-    if(!lost){
+    if((!lost) && (hover_e == true)){
         stat.textContent = "YOU WON!";
         hover = false;
-    }
-    if(hover_e == true){
         score += 5;
         localStorage.setItem('score', score);
         store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
         hover_e = false;
     }
+    // if(hover_e == true){
+    //     score += 5;
+    //     localStorage.setItem('score', score);
+    //     store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
+    //     hover_e = false;
+    // }
 }
 
 
