@@ -8,10 +8,11 @@ let score = 0; //keep track of the score
 let store; //put score inside the element that has id = boundary example
 let hover_e = true; //keep track of the hovers over E 
 let i; //counter
-let out; 
-let username;
+let out; //to check if the user cheated 
+let username; //get user's username
 
 window.onload = function(){
+    //login system with verification 
     store = document.getElementsByClassName("boundary example");
     let flag = true;
     username = prompt("Enter Username: ");
@@ -32,11 +33,14 @@ window.onload = function(){
         localStorage.setItem(username, JSON.stringify(users));
         store[0].innerHTML = "<span><strong>Score: </strong></span>" + users.score;
     }
-// ---------------------------------------------------------------------------------------
+
+    /*________________________________________________________________________________________________ */
+
+    //This is where the game begins
     start = document.getElementById("start"); //access the element that has id = start
     start.onmouseover = hover_start; //check if the mouse hovered over S to start the game
     start.onclick = sClick; //check if the user click on S to reset settings
-    out = document.getElementById("game");
+    out = document.getElementById("game"); //access element with id = game
     out.onmouseleave = overBoundary; //disable cheating
     end = document.getElementById("end"); //access the element that has id = end
     end.onmouseover = end_game; //check if the mouse hovered over E to end the game
@@ -47,6 +51,8 @@ window.onload = function(){
     }
     
 }
+
+/* ____________________________________________________________________________________________________ */
 
 //If the user touches the boundaries
 function overBoundary(){
@@ -70,12 +76,16 @@ function overBoundary(){
     }
 }
 
+/*_____________________________________________________________________________________________________*/
+
 //Start the game when we hover over S
 function hover_start(){
     if(hover_e){
         hover = true;
     }
 }
+
+/*_____________________________________________________________________________________________________*/
 
 //refresh/restart when clicking on S
 function sClick(){
@@ -94,6 +104,8 @@ function sClick(){
     //document.location.reload(true);
     stat.textContent = "Begin by moving your mouse over the \"S\".";
 }
+
+/*_____________________________________________________________________________________________________*/
 
 //Check if the user won when hover over the E
 function end_game(){
