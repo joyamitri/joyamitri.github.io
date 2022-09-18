@@ -9,8 +9,30 @@ let store; //put score inside the element that has id = boundary example
 let hover_e = true; //keep track of the hovers over E 
 let i; //counter
 let out; 
+let username;
 
 window.onload = function(){
+    store = document.getElementsByClassName("boundary example");
+    let flag = true;
+    username = prompt("Enter Username: ");
+    const user_veri = JSON.parse(localStorage.getItem(username));
+    if(user_veri != null){
+        let password = String(prompt("Enter Password: "));
+        while(flag){
+            if(String(user_veri.pass) != password){
+                password = String(prompt("Enter Password: "));
+            }else{
+                flag = false;
+            }
+        }
+        store[0].innerHTML = "<span><strong>Score: </strong></span>" + user_veri.score; 
+    }else{
+        let password = prompt("Enter Password: ");
+        const users = {name: username, pass: password, score: 0};
+        localStorage.setItem(username, JSON.stringify(users));
+        store[0].innerHTML = "<span><strong>Score: </strong></span>" + users.score;
+    }
+// ---------------------------------------------------------------------------------------
     start = document.getElementById("start"); //access the element that has id = start
     start.onmouseover = hover_start; //check if the mouse hovered over S to start the game
     start.onclick = sClick; //check if the user click on S to reset settings
@@ -20,8 +42,6 @@ window.onload = function(){
     end.onmouseover = end_game; //check if the mouse hovered over E to end the game
     bounds = document.getElementsByClassName("boundary"); //array that stores elements that have className = boundary
     stat = document.getElementById("status"); //access h2 tag to check the status of the user
-    store = document.getElementsByClassName("boundary example");
-    store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
     for(i = 0; i < bounds.length - 1; i++){
         bounds[i].onmouseover = overBoundary; //check if the user touched the boundaries 
     }
@@ -39,9 +59,11 @@ function overBoundary(){
         }
         stat.textContent = "YOU LOST!!";
         if(i == bounds.length - 1){
-            score -= 10;
-            localStorage.setItem('score', score);
-            store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
+            let user_score_dec = JSON.parse(localStorage.getItem(username));
+            user_score_dec.score -= 10;
+            localStorage.setItem(username, JSON.stringify(user_score_dec));
+            score = JSON.parse(localStorage.getItem(username));
+            store[0].innerHTML = "<span><strong>Score: </strong></span>" + score.score;
             i++;
             hover_e = false;
         }
@@ -79,9 +101,11 @@ function end_game(){
     if((!lost) && (hover_e == true)){
         stat.textContent = "YOU WON!";
         hover = false;
-        score += 5;
-        localStorage.setItem('score', score);
-        store[0].innerHTML = "<span><strong>Score: </strong></span>" + localStorage.getItem('score');
+        let user_score_inc = JSON.parse(localStorage.getItem(username));
+        user_score_inc.score += 5;
+        localStorage.setItem(username, JSON.stringify(user_score_inc));
+        score = JSON.parse(localStorage.getItem(username));
+        store[0].innerHTML = "<span><strong>Score: </strong></span>" + score.score;
         hover_e = false;
     }
 }
