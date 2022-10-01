@@ -2,13 +2,18 @@
     background-image: url(board.png);
     height: 420px;
     width: 420px;
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: relative;
-    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
 }
-
+.hold{
+    margin: 20px;
+}
 .cell{
     height: 140px;
     width: 140px;
