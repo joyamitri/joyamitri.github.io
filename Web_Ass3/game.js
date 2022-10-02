@@ -21,7 +21,7 @@ function startGame() {
     document.getElementById("sett").style.display = "none";
     origBoard = Array.from(Array(9).keys());
     for(let a = 0; a < cells.length; a++){
-        cells[a].innerText = '';
+        cells[a].className = "cell";
         cells[a].style.removeProperty('background-color');
         cells[a].addEventListener('click', turnClick, false);
     }
@@ -39,69 +39,11 @@ function turnClick(square) {
 function turn(cell_id, player){
     origBoard[cell_id] = player;
     const cell = document.getElementById(cell_id);
-    // cell.innerText = player;
     if(player == "X"){
         cell.className += " hold-red";
     }else{
         cell.className += " hold-yellow";
     }
-    // let pos = 0;
-    // let id = null;
-    // clearInterval(id);
-    // id = setInterval(frame, 5);
-    // function frame(){
-    //     if(pos == cell_pos){
-    //     clearInterval(id);
-    //     }else{
-    //         pos++;
-    //         if(cell_id == "0"){
-    //             el.style.top = 150 + "px";
-    //             el.style.right = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "1"){
-    //             el.style.top = 150 + "px";
-    //             el.style.bottom = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "2"){
-    //             el.style.top = 150 + "px";
-    //             el.style.left = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "3"){
-    //             el.style.top = 310 + "px";
-    //             el.style.right = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "4"){
-    //             el.style.top = 310 + "px";
-    //             el.style.bottom = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "5"){
-    //             el.style.top = 310 + "px";
-    //             el.style.left = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "6"){
-    //             el.style.top = 460 + "px";
-    //             el.style.right = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "7"){
-    //             el.style.top = 460 + "px";
-    //             el.style.bottom = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-    //         else if(cell_id == "8"){
-    //             el.style.top = 460 + "px";
-    //             el.style.left = cell_pos + "px";
-    //             el.style.opacity = 1; 
-    //         }
-            
-    //     }
-    // }
     let gameWon = checkWin(origBoard, player)
     if (gameWon) gameOver(gameWon)
 
