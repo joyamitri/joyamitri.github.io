@@ -6,13 +6,18 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: relative;
-    margin-top: 100px;
-    margin-bottom: 10px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto;
 }
 .hold{
-    margin: 20px;
+    background-image: url(red.png);
+    height: 200px;
+    width: 200px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30% 30%;
+    position: relative;
+    opacity: 0.5;
+    margin: 0 auto;
 }
 .cell{
     height: 140px;
