@@ -38,13 +38,13 @@ function turnClick(square) {
 
 function turn(cell_id, player){
     origBoard[cell_id] = player;
-    // const el = document.getElementById("coin");
-    document.getElementById(cell_id).innerText = player;
-    // if(player == "red") {
-    //     el.classList.add("hold-red");
-    // }else{
-    //     el.classList.add("hold-yellow");
-    // }
+    const cell = document.getElementById(cell_id);
+    // cell.innerText = player;
+    if(player == "X"){
+        cell.className += " hold-red";
+    }else{
+        cell.className += " hold-yellow";
+    }
     // let pos = 0;
     // let id = null;
     // clearInterval(id);
