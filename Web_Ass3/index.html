@@ -5,18 +5,23 @@
     </head>
     <body>
         <div>
-            <div class="hold" id="red"></div>
+            <div class="hold-red" id="coin"></div>
             <div class = "board">
-                <div class="cell" id="row1-cell1"></div>
-                <div class="cell" id="row1-cell2"></div>
-                <div class="cell" id="row1-cell3"></div>
-                <div class="cell" id="row2-cell1"></div>
-                <div class="cell" id="row2-cell2" ></div>
-                <div class="cell" id="row2-cell3"></div>
-                <div class="cell" id="row3-cell1"></div>
-                <div class="cell" id="row3-cell2"></div>
-                <div class="cell" id="row3-cell3"></div>
-
+                <div class="row1">
+                    <div class="cell" id="row1-cell1"></div>
+                    <div class="cell" id="row1-cell2"></div>
+                    <div class="cell" id="row1-cell3"></div>
+                </div>
+                <div class="row2">
+                    <div class="cell" id="row2-cell1"></div>
+                    <div class="cell" id="row2-cell2"></div>
+                    <div class="cell" id="row2-cell3"></div>
+                </div>
+                <div class="row3">
+                    <div class="cell" id="row3-cell1"></div>
+                    <div class="cell" id="row3-cell2"></div>
+                    <div class="cell" id="row3-cell3"></div>
+                </div>
             </div>
             <div class="setting">
                 <div class="initial-state">
@@ -29,25 +34,6 @@
                 </div>
             </div>
         </div>
-        <!-- <script>
-            function myMove(){
-                let id = null;
-                const el = document.getElementById("red");
-                let pos = 0;
-                clearInterval(id);
-                id = setInterval(frame, 5);
-                function frame(){
-                    if(pos == 150){
-                    clearInterval(id);
-                    }else{
-                        pos++
-                        el.style.top = pos + "px";
-                        el.style.right = pos + "px";
-                        el.style.opacity = 1;
-                    }
-                }
-            }
-        </script> -->
         <script src="game.js" type="text/javascript"></script>
     </body>
 </html>
