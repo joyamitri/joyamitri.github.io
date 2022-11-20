@@ -26,3 +26,7 @@ showPass.addEventListener('click',()=>{
 
 })
 
+btnLogin.onclick = ()=>{
+
+    location.assign('../instagram/home.html')
+}
