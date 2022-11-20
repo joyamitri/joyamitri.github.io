@@ -6,4 +6,8 @@ let showPass =  document.querySelector('.show-pass')
 let btnLogin =  document.querySelector('.btn-login')
 
 
+inUser.addEventListener('keypress',()=>{
+    labelUser.classList.add('on')
+})
+
 
